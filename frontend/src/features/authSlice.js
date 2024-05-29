@@ -6,10 +6,11 @@ const initialState = {
     isError: false,
     isSuccess: false,
     isLoading: false,
-    message: ""
-}
+    message: "",
+    isConnectionError: false 
+};
 
-// Login User Thunk
+
 export const LoginUser = createAsyncThunk("user/LoginUser", async (user, thunkAPI) => {
     try {
         const response = await axios.post('http://localhost:5000/login', {
@@ -18,10 +19,11 @@ export const LoginUser = createAsyncThunk("user/LoginUser", async (user, thunkAP
         });
         return response.data;
     } catch (error) {
-        if (error.response) {
-            const message = error.response.data.msg;
-            return thunkAPI.rejectWithValue(message);
+        if (!error.response) {
+            return thunkAPI.rejectWithValue("Connection Error: Please check your internet connection or try again later.");
         }
+        const message = error.response.data.msg;
+        return thunkAPI.rejectWithValue(message);
     }
 });
 
@@ -35,10 +37,11 @@ export const RegisterUser = createAsyncThunk("user/RegisterUser", async (user, t
         });
         return response.data;
     } catch (error) {
-        if (error.response) {
-            const message = error.response.data.msg;
-            return thunkAPI.rejectWithValue(message);
+        if (!error.response) {
+            return thunkAPI.rejectWithValue("Connection Error: Please check your internet connection or try again later.");
         }
+        const message = error.response.data.msg;
+        return thunkAPI.rejectWithValue(message);
     }
 });
 
@@ -48,10 +51,11 @@ export const getMe = createAsyncThunk("user/getMe", async (_, thunkAPI) => {
         const response = await axios.get('http://localhost:5000/me');
         return response.data;
     } catch (error) {
-        if (error.response) {
-            const message = error.response.data.msg;
-            return thunkAPI.rejectWithValue(message);
+        if (!error.response) {
+            return thunkAPI.rejectWithValue("Connection Error: Please check your internet connection or try again later.");
         }
+        const message = error.response.data.msg;
+        return thunkAPI.rejectWithValue(message);
     }
 });
 
@@ -79,6 +83,9 @@ export const authSlice = createSlice({
         builder.addCase(LoginUser.rejected, (state, action) => {
             state.isLoading = false;
             state.isError = true;
+            if (action.payload === "Connection Error: Please check your internet connection or try again later.") {
+                state.isConnectionError = true;
+            }
             state.message = action.payload;
         });
 
@@ -94,6 +101,9 @@ export const authSlice = createSlice({
         builder.addCase(RegisterUser.rejected, (state, action) => {
             state.isLoading = false;
             state.isError = true;
+            if (action.payload === "Connection Error: Please check your internet connection or try again later.") {
+                state.isConnectionError = true;
+            }
             state.message = action.payload;
         });
 
@@ -109,6 +119,9 @@ export const authSlice = createSlice({
         builder.addCase(getMe.rejected, (state, action) => {
             state.isLoading = false;
             state.isError = true;
+            if (action.payload === "Connection Error: Please check your internet connection or try again later.") {
+                state.isConnectionError = true;
+            }
             state.message = action.payload;
         });
     }

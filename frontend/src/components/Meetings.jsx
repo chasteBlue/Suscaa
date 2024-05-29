@@ -46,7 +46,7 @@ const Meetings = () => {
 
   return (
     <div>
-      <h1 className="title">Send Meetings</h1>
+      <h1 className="title">Meetings</h1>
       <h2 className="subtitle">List of Meetings</h2>
       <table className="table is-striped is-fullwidth">
         <thead>
