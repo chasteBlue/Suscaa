@@ -1,0 +1,107 @@
+POST http://localhost:5000/users
+Content-Type: application/json
+
+{
+    "name": "Dayn",
+    "email": "dynnhielmtalisayan@su.edu.ph",
+    "password": "password123",
+    "confPassword": "password123"
+}
+
+###
+//get all users
+GET http://localhost:5000/users
+
+###
+//get single user
+GET http://localhost:5000/users/d758ceee-50fc-4f9e-ac81-de97340a0c12
+
+###
+//update user
+PATCH  http://localhost:5000/users/409251fc-11c5-4ab9-bbd4-c163e209c70f
+Content-Type: application/json
+
+{
+    "name": "Lakan sya",
+    "email": "jazzle@example.com",
+    "password": "",
+    "confPassword": ""
+}
+
+###
+//delete user
+
+DELETE  http://localhost:5000/users/d758ceee-50fc-4f9e-ac81-de97340a0c12
+Content-Type: application/json
+
+###
+//Login User
+POST http://localhost:5000/login
+Content-Type: application/json
+
+{
+    "email": "dynnhielmtalisayan@su.edu.ph",
+    "password": "password123"
+}
+
+###
+//Login Admin
+POST http://localhost:5000/login
+Content-Type: application/json
+
+{
+    "email": "jazzle@example.com",
+    "password": "password123"
+}
+###
+//Me
+GET http://localhost:5000/me
+
+###
+//Logout
+DELETE http://localhost:5000/logout
+
+###
+//Appointments
+GET http://localhost:5000/appointments
+
+###
+//Get single
+GET http://localhost:5000/appointments/a40890ea-4585-48ad-8a22-03dd0647c5fd
+
+
+###
+//Create Appointments
+POST http://localhost:5000/appointments
+Content-Type: application/json
+
+{
+    "name": "BabyYou are",
+    "degree": "Bachelor of Arts",
+    "school_year": 2,
+    "student_id": 123456789,
+    "address_city": "New York",
+    "address_street": "123 Main St",
+    "reason": "personal problems",
+    "status":"Pending"
+}
+
+###
+//Update Appointments
+PATCH  http://localhost:5000/appointments/6ff95198-b5cf-4f1b-8968-19d5ecd93b3e
+Content-Type: application/json
+
+{
+    "name": "Name Undertale",
+    "degree": "Bachelor of really",
+    "school_year": 2,
+    "student_id": 123456789,
+    "address_city": "New York",
+    "address_street": "123 Main St",
+    "reason": "personal problems",
+    "status":"Pending"
+}
+
+###
+//Delete appointment
+DELETE http://localhost:5000/appointments/6ff95198-b5cf-4f1b-8968-19d5ecd93b3e
