@@ -16,7 +16,7 @@ const EditUser = () => {
 
   useEffect(() => {
     if (isError) {
-      navigate("/"); // Redirect to the home page if there's an error
+      navigate("/"); 
     }
   }, [isError, navigate]);
 

@@ -64,7 +64,7 @@ export const getAppointmentById = async (req, res) => {
         let response;
         if (req.role === "admin") {
             response = await Appointments.findOne({
-                attributes:['uuid','name','reason','status'],
+                attributes:['uuid','name','reason','status','degree','school_year','address_city','address_street', 'reason','student_id'],
                 where: { uuid: req.params.uuid }, // Use UUID for query
                 include: [{
                     model: Users,
@@ -73,7 +73,7 @@ export const getAppointmentById = async (req, res) => {
             });
         } else {
             response = await Appointments.findOne({
-                attributes:['uuid','name','reason','status'],
+                attributes:['uuid','name','reason','status','degree','school_year','address_city','address_street', 'reason','student_id'],
                 where: {
                     [Op.and]:[{ uuid: req.params.uuid },{ userId: req.userId }]
                 },

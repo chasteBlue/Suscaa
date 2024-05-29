@@ -7,6 +7,7 @@ import Register from "./components/Register";
 import FrontPage from "./components/FrontPage";
 import EditUser from "./pages/EditUser";
 import AddAppoint from "./pages/AddAppoint";
+import EditAppoint from "./pages/EditAppoint";
 import Profile from "./pages/Profile";
 import MeetingsSend from "./pages/MeetingsSend";
 import MeetingsSendEdit from "./pages/MeetingsSendEdit";
@@ -28,6 +29,8 @@ function App() {
 
           <Route path="/appointments" element={<Appointments/>}/>
           <Route path="/appointments/add_appointment" element={<AddAppoint/>}/>
+          <Route path="/appointments/edit/:id" element={<EditAppoint/>}/>
+
           <Route path="/meetings" element={<MeetingsSend/>}/>
           <Route path="/your_meetings" element={<MeetingsPage/>}/>
           <Route path="/meetings/edit/:id" element={<MeetingsSendEdit/>}/>
