@@ -9,7 +9,7 @@ const Layout = ({children}) => {
         <Navbar/>
         <div className="columns mt-6" style={{minHeight:"100vh"}}>
             <div className="column is-2"> <Sidebar/> </div>
-                <div className="column has-background-light">
+                <div className="column " style={{backgroundColor:"#e5e5f2"}}>
                     <main>{children}</main>
                 </div>
                 

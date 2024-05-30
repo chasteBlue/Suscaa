@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import Layout from "./Layout";
 import Welcome from "../components/Welcome";
-import Statistics from "../components/Stats";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { getMe } from "../features/authSlice";
@@ -24,7 +23,6 @@ const Dashboard = () => {
   return (
     <Layout>
       <Welcome />
-      <Statistics/>
     </Layout>
   );
 };

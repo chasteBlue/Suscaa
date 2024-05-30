@@ -32,47 +32,52 @@ const SendMeeting = () => {
     }
   };
 
-  const renderMeetings = () => {
+  const renderMeetings = (status) => {
     if (!Array.isArray(meetings)) {
       return null;
     }
 
-    return meetings.map((meeting, index) => (
-      <tr key={meeting.uuid}>
-        <td>{index + 1}</td>
-        <td>{meeting.name}</td>
-        <td>{meeting.reason}</td>
-        <td>{meeting.date_counsel}</td>
-        <td>{meeting.counselors}</td>
-        <td>{meeting.status}</td>
-        <td>{meeting.user ? meeting.user.name : 'N/A'}</td>
-        <td>
-            <>
-              <Link
-                to={`/meetings/edit/${meeting.uuid}`}
-                className="button is-small is-info mr-1"
-              >
-                Edit
-              </Link>
-              <button
-                onClick={() => deleteMeeting(meeting.uuid)}
-                className="button is-small is-danger"
-              >
-                Delete
-              </button>
-            </>
-        </td>
-      </tr>
-    ));
+    return meetings
+      .filter(meeting => meeting.status === status)
+      .map((meeting, index) => (
+        <tr key={meeting.uuid}>
+          <td>{index + 1}</td>
+          <td>{meeting.name}</td>
+          <td>{meeting.reason}</td>
+          <td>{meeting.date_counsel}</td>
+          <td>{meeting.counselors}</td>
+          <td>{meeting.status}</td>
+          <td>{meeting.user ? meeting.user.name : 'N/A'}</td>
+          {status === 'Pending' ? (
+            <td>
+              <>
+                <Link
+                  to={`/meetings/edit/${meeting.uuid}`}
+                  className="button is-small is-info mr-1"
+                >
+                  Edit
+                </Link>
+                <button
+                  onClick={() => deleteMeeting(meeting.uuid)}
+                  className="button is-small is-danger"
+                >
+                  Delete
+                </button>
+              </>
+            </td>
+          ) : null}
+        </tr>
+      ));
   };
 
   return (
     <div>
-      <h1 className="title">Send Meetings</h1>
-      <h2 className="subtitle">List of Meetings</h2>
+      <h1 className="title" style={{ padding: '10px', borderRadius: '5px' }}>Send Meetings</h1>
+
+      <h2 className="subtitle" style={{ padding: '10px', borderRadius: '5px' }}>Pending Meetings</h2>
       <table className="table is-striped is-fullwidth">
         <thead>
-          <tr>
+          <tr style={{ backgroundColor: 'yellow' }}>
             <th>No</th>
             <th>Name</th>
             <th>Reason</th>
@@ -84,7 +89,43 @@ const SendMeeting = () => {
           </tr>
         </thead>
         <tbody>
-          {renderMeetings()}
+          {renderMeetings('Pending')}
+        </tbody>
+      </table>
+
+      <h2 className="subtitle" style={{  padding: '10px', borderRadius: '5px' }}>Approved Meetings</h2>
+      <table className="table is-striped is-fullwidth">
+        <thead>
+          <tr style={{ backgroundColor: 'lightgreen' }}>
+            <th>No</th>
+            <th>Name</th>
+            <th>Reason</th>
+            <th>Date of Counsel</th>
+            <th>Counselors</th>
+            <th>Status</th>
+            <th>Sent By</th>
+          </tr>
+        </thead>
+        <tbody>
+          {renderMeetings('Approved')}
+        </tbody>
+      </table>
+
+      <h2 className="subtitle" style={{ padding: '10px', borderRadius: '5px' }}>Cancelled Meetings</h2>
+      <table className="table is-striped is-fullwidth">
+        <thead>
+          <tr style={{ backgroundColor: 'lightcoral' }}>
+            <th>No</th>
+            <th>Name</th>
+            <th>Reason</th>
+            <th>Date of Counsel</th>
+            <th>Counselors</th>
+            <th>Status</th>
+            <th>Sent By</th>
+          </tr>
+        </thead>
+        <tbody>
+          {renderMeetings('Rejected')}
         </tbody>
       </table>
     </div>

@@ -2,7 +2,7 @@ import React from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { LogOut, reset } from "../features/authSlice";
-import logo192 from './logo192.png';
+import logo from '../images/logo.png';
 import './App.css';
 
 
@@ -25,10 +25,10 @@ const Navbar = () => {
         aria-label="main navigation"
       >
         <div className="navbar-brand">
-          <NavLink to="/dashboard" className="navbar-item">
-            <img src={logo192} width="50" height="100%" alt="logo" />
+        <NavLink to="/dashboard" className="navbar-item">
+            <img src={logo} width="50" height="100" alt="logo" />
+            <p className="title">SU-SCAA</p>
           </NavLink>
-
           <a
             href="!#"
             role="button"
@@ -54,6 +54,7 @@ const Navbar = () => {
             </div>
           </div>
         </div>
+       
       </nav>
     </div>
   );

@@ -10,7 +10,6 @@ export const Sidebar = () => {
     const { user } = useSelector((state) => state.auth);
 
     useEffect(() => {
-        // Check if user is not admin and trying to access users page
         if (user && user.role !== "admin" && window.location.pathname === "/users") {
             navigate("/dashboard"); // Redirect to dashboard
         }
@@ -44,9 +43,6 @@ export const Sidebar = () => {
                         </ul>
                     </div>
                 )}
-
-                {/* Conditionally render Profile link for non-admin users */}
-                {user && user.role !== "admin" && (
                     <div>
                         <p className="menu-label">Profile</p>
                         <ul className="menu-list">
@@ -57,7 +53,6 @@ export const Sidebar = () => {
                             </li>
                         </ul>
                     </div>
-                )}
 
                 <p className="menu-label">Settings</p>
                 <ul className="menu-list">

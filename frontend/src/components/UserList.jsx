@@ -20,47 +20,38 @@ const UserList = () => {
   };
 
   return (
-    <div>
-      <h1 className="title">Users</h1>
-      <h2 className="subtitle">List of Users</h2>
-      <Link to="/users/add" className="button is-primary mb-2">
-        Add New
-      </Link>
-      <table className="table is-striped is-fullwidth">
-        <thead>
-          <tr>
-            <th>No</th>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Role</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
+    <div className="user-list-container">
+      <div className="user-list">
+        <h1 className="title">Users</h1>
+        <h2 className="subtitle">List of Users</h2>
+        <div className="columns is-multiline">
           {users.map((user, index) => (
-            <tr key={user.uuid}>
-              <td>{index + 1}</td>
-              <td>{user.name}</td>
-              <td>{user.email}</td>
-              <td>{user.role}</td>
-              <td>
-                <Link
-                  to={`/users/edit/${user.uuid}`}
-                  className="button is-small is-info"
-                >
-                  Edit
-                </Link>
-                <button
-                  onClick={() => deleteUser(user.uuid)}
-                  className="button is-small is-danger"
-                >
-                  Delete
-                </button>
-              </td>
-            </tr>
+            <div key={user.uuid} className="column is-one-third">
+              <div className="card">
+                <div className="card-content">
+                  <p className="title">{user.name}</p>
+                  <p className="subtitle">{user.email}</p>
+                  <p className="content">Role: {user.role}</p>
+                  <div className="buttons">
+                    <Link
+                      to={`/users/edit/${user.uuid}`}
+                      className="button is-info is-small"
+                    >
+                      Edit
+                    </Link>
+                    <button
+                      onClick={() => deleteUser(user.uuid)}
+                      className="button is-danger is-small"
+                    >
+                      Delete
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
           ))}
-        </tbody>
-      </table>
+        </div>
+      </div>
     </div>
   );
 };

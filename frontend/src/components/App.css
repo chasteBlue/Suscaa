@@ -1,3 +1,80 @@
-.custom-navbar {
-    height: 20vh;
+.custom-navbar{
+    height: 10vh;
 }
+.title-color{
+    color:#2b3a61;
+}
+
+.title, .subtitle{
+    color:#646779;
+}
+
+.box {
+    display: flex;
+    justify-content: space-between; /* Aligns items to each end of the container */
+    align-items: center; /* Centers items vertically */
+  }
+  
+  .time-info {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+
+.counselor-info {
+    display: flex;
+    align-items: center; 
+    margin: 10px 0 10px 0;
+  }
+  
+  .counselor-img {
+    width: 50px; /* Adjust the size as needed */
+    height: 50px; /* Adjust the size as needed */
+    border-radius: 50%; /* Make it a circle */
+    overflow: hidden; /* Hide overflow content */
+    margin-right: 10px; /* Add space between image and name */
+  }
+  
+  .counselor-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Maintain aspect ratio */
+  }
+  
+  
+.calendar {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    gap: 10px;
+  }
+  
+  .calendar-header {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+  }
+  
+  .calendar-header-day {
+    text-align: center;
+    font-weight: bold;
+  }
+  
+  .calendar-body {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+  }
+  
+  .calendar-day {
+    text-align: center;
+    padding: 10px;
+    border: 1px solid #ddd;
+  }
+  
+  .current-day {
+    background-color: #6180b2;
+    font-weight: bold;
+    color: #ddd;
+  }
+  
