@@ -1,4 +1,3 @@
-// Register.js
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
@@ -50,15 +49,15 @@ const Register = () => {
     }, [isSuccess, dispatch, navigate]);
 
     return (
-        <section className="hero has-background-grey-light is-fullheight is-fullwidth">
+        <section className="hero is-fullheight is-fullwidth" style={{ backgroundColor: '#EBE1D5' }}>
             <div className="hero-body">
                 <div className="container">
                     <div className="columns is-centered">
                         <div className="column is-4">
                             <form onSubmit={handleRegister} className="box">
                                 {isError && <p className='has-text-centered'>{message}</p>}
-                                <h1 className="title is-2">Sign Up</h1>
-                                <p className='mt-1 mb-3'>Student's Safe Place</p>
+                                <h1 className="title is-2 has-text-centered">Sign Up</h1>
+                                <p className='mt-1 mb-3 has-text-centered'>Student's Safe Place</p>
 
                                 <div className="field">
                                     <label className="label">Name</label>
@@ -119,7 +118,9 @@ const Register = () => {
                                         Sign Up
                                     </button>
                                 </div>
-                                <Link to="/login" className="is-primary is-medium">Already have an account? Sign In!</Link>
+                                <div className="has-text-centered">
+                                    <Link to="/login" className="is-primary is-medium">Already have an account? Sign In!</Link>
+                                </div>
                             </form>
                         </div>
                     </div>
