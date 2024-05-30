@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { LoginUser, reset } from "../features/authSlice";
+import logo from '../components/su-scaa-logo.png'; // Make sure the path to your logo is correct
 
 const Login = () => {
     const [email, setEmail] = useState("");
@@ -34,17 +35,18 @@ const Login = () => {
     };
 
     return (
-        <section className="hero has-background-grey-light is-fullheight is-fullwidth">
+        <section className="hero is-fullheight is-fullwidth" style={{ backgroundColor: '#EBE1D5' }}>
             <div className="hero-body">
-                <div className="container">
+                <div className="container has-text-centered">
+                    <Link to="/" ><img src={logo} alt="Logo" style={{ marginBottom: '20px', maxWidth: '300px', height: 'auto' }} /></Link>
                     <div className="columns is-centered">
                         <div className="column is-4">
                             <form onSubmit={Auth} className="box">
                                 {isError && <p className='has-text-centered'>{message}</p>}
                                 <h1 className="title is-2">Sign In</h1>
-                                <p className='mt-1 mb-3'>Welcome to SU-SCAA</p>
+                                <p className='mt-1 mb-3'>Welcome to SU-SCA</p>
                                 <div className="field">
-                                    <label className="label">Email</label>
+                                    <label className="label has-text-left">Email</label>
                                     <div className="control">
                                         <input 
                                             type="text" 
@@ -58,7 +60,7 @@ const Login = () => {
                                 </div>
 
                                 <div className="field">
-                                    <label className="label">Password</label>
+                                    <label className="label has-text-left">Password</label>
                                     <div className="control">
                                         <input 
                                             type="password" 
