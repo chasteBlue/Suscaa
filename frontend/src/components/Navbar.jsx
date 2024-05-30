@@ -2,9 +2,8 @@ import React from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { LogOut, reset } from "../features/authSlice";
-import logo192 from './logo192.png';
+import logo from '../components/su-scaa-logo.png';
 import './App.css';
-
 
 const Navbar = () => {
   const dispatch = useDispatch();
@@ -26,7 +25,11 @@ const Navbar = () => {
       >
         <div className="navbar-brand">
           <NavLink to="/dashboard" className="navbar-item">
-            <img src={logo192} width="50" height="100%" alt="logo" />
+            <img
+              src={logo}
+              alt="logo"
+              style={{ height: "200px", width: "90px" }} 
+            />
           </NavLink>
 
           <a
