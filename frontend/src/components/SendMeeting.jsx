@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import axios from "axios";
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 const SendMeeting = () => {
   const [meetings, setMeetings] = useState([]);
@@ -11,15 +11,14 @@ const SendMeeting = () => {
 
   const getMeetings = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/meetings");
-      console.log(response.data);
+      const response = await axios.get('http://localhost:5000/meetings');
       if (Array.isArray(response.data.response)) {
         setMeetings(response.data.response);
       } else {
-        console.error("Data is not an array:", response.data);
+        console.error('Data is not an array:', response.data);
       }
     } catch (error) {
-      console.error("Error fetching meetings:", error);
+      console.error('Error fetching meetings:', error);
     }
   };
 
@@ -28,8 +27,13 @@ const SendMeeting = () => {
       await axios.delete(`http://localhost:5000/meetings/${meetingId}`);
       getMeetings();
     } catch (error) {
-      console.error("Error deleting meeting:", error);
+      console.error('Error deleting meeting:', error);
     }
+  };
+
+  const formatDate = (dateString) => {
+    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+    return new Date(dateString).toLocaleDateString(undefined, options);
   };
 
   const renderMeetings = (status) => {
@@ -38,32 +42,28 @@ const SendMeeting = () => {
     }
 
     return meetings
-      .filter(meeting => meeting.status === status)
+      .filter((meeting) => meeting.status === status)
       .map((meeting, index) => (
         <tr key={meeting.uuid}>
           <td>{index + 1}</td>
           <td>{meeting.name}</td>
           <td>{meeting.reason}</td>
-          <td>{meeting.date_counsel}</td>
-          <td>{meeting.counselors}</td>
+          {status !== 'Pending' && (
+            <>
+              <td>{formatDate(meeting.date_counsel)}</td>
+              <td>{meeting.counselors}</td>
+            </>
+          )}
           <td>{meeting.status}</td>
           <td>{meeting.user ? meeting.user.name : 'N/A'}</td>
           {status === 'Pending' ? (
             <td>
-              <>
-                <Link
-                  to={`/meetings/edit/${meeting.uuid}`}
-                  className="button is-small is-info mr-1"
-                >
-                  Edit
-                </Link>
-                <button
-                  onClick={() => deleteMeeting(meeting.uuid)}
-                  className="button is-small is-danger"
-                >
-                  Delete
-                </button>
-              </>
+              <Link to={`/meetings/edit/${meeting.uuid}`} className="button is-small is-info mr-1">
+                Edit
+              </Link>
+              <button onClick={() => deleteMeeting(meeting.uuid)} className="button is-small is-danger">
+                Delete
+              </button>
             </td>
           ) : null}
         </tr>
@@ -73,6 +73,9 @@ const SendMeeting = () => {
   return (
     <div>
       <h1 className="title" style={{ padding: '10px', borderRadius: '5px' }}>Send Meetings</h1>
+      <Link to="/meetings-history" className="button is-primary mb-2">
+        Meetings History
+      </Link>
 
       <h2 className="subtitle" style={{ padding: '10px', borderRadius: '5px' }}>Pending Meetings</h2>
       <table className="table is-striped is-fullwidth">
@@ -81,19 +84,15 @@ const SendMeeting = () => {
             <th>No</th>
             <th>Name</th>
             <th>Reason</th>
-            <th>Date of Counsel</th>
-            <th>Counselors</th>
             <th>Status</th>
             <th>Sent By</th>
             <th>Actions</th>
           </tr>
         </thead>
-        <tbody>
-          {renderMeetings('Pending')}
-        </tbody>
+        <tbody>{renderMeetings('Pending')}</tbody>
       </table>
 
-      <h2 className="subtitle" style={{  padding: '10px', borderRadius: '5px' }}>Approved Meetings</h2>
+      <h2 className="subtitle" style={{ padding: '10px', borderRadius: '5px' }}>Approved Meetings</h2>
       <table className="table is-striped is-fullwidth">
         <thead>
           <tr style={{ backgroundColor: 'lightgreen' }}>
@@ -106,9 +105,7 @@ const SendMeeting = () => {
             <th>Sent By</th>
           </tr>
         </thead>
-        <tbody>
-          {renderMeetings('Approved')}
-        </tbody>
+        <tbody>{renderMeetings('Approved')}</tbody>
       </table>
 
       <h2 className="subtitle" style={{ padding: '10px', borderRadius: '5px' }}>Cancelled Meetings</h2>
@@ -124,9 +121,7 @@ const SendMeeting = () => {
             <th>Sent By</th>
           </tr>
         </thead>
-        <tbody>
-          {renderMeetings('Rejected')}
-        </tbody>
+        <tbody>{renderMeetings('Rejected')}</tbody>
       </table>
     </div>
   );

@@ -32,6 +32,11 @@ const Meetings = () => {
     }
   };
 
+  const formatDate = (dateString) => {
+    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+    return new Date(dateString).toLocaleDateString(undefined, options);
+  };
+
   const renderMeetings = (status) => {
     if (!Array.isArray(meetings)) {
       return null;
@@ -55,7 +60,7 @@ const Meetings = () => {
         <td>{meeting.reason}</td>
         {status !== 'Pending' && (
           <>
-            <td>{meeting.date_counsel}</td>
+            <td>{formatDate(meeting.date_counsel)}</td>
             <td>{meeting.counselors}</td>
             <td>{meeting.user ? meeting.user.name : 'N/A'}</td>
           </>
@@ -74,6 +79,9 @@ const Meetings = () => {
   return (
     <div className="container">
       <h1 className="title" style={{ padding: '10px', borderRadius: '5px' }}>Meetings</h1>
+      <Link to="/meetings-history" className="button is-primary mb-2">
+        Meetings History
+      </Link>
       <div className="columns">
         <div className="column">
           <div className="box">

@@ -12,6 +12,7 @@ import Profile from "./pages/Profile";
 import MeetingsSend from "./pages/MeetingsSend";
 import MeetingsSendEdit from "./pages/MeetingsSendEdit";
 import MeetingsPage from "./pages/MeetingsPage";
+import History from "./pages/History";
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
           <Route path="/meetings" element={<MeetingsSend/>}/>
           <Route path="/your_meetings" element={<MeetingsPage/>}/>
           <Route path="/meetings/edit/:id" element={<MeetingsSendEdit/>}/>
+          <Route path="/meetings-history" element={<History/>}/>
           
         </Routes>
       </BrowserRouter>

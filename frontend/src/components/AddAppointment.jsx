@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,  useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
@@ -11,10 +11,24 @@ const AddAppointment = () => {
   const [address_street, setStreet] = useState('');
   const [address_city, setCity] = useState('');
   const [msg, setMsg] = useState('');
+  const [error, setError] = useState("");
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (error) {
+      const timer = setTimeout(() => setError(''), 3000); // Clear error after 3 seconds
+      return () => clearTimeout(timer); // Cleanup timer on component unmount
+    }
+  }, [error]);
 
   const addAppointment = async (e) => {
     e.preventDefault();
+
+    if (!name || !degree || !school_year || !reason || !student_id | !address_city || !address_street) {
+      setError("All fields are required");
+      return;
+    }
+
     try {
       await axios.post('http://localhost:5000/appointments', {
         name,
@@ -29,6 +43,8 @@ const AddAppointment = () => {
     } catch (error) {
       if (error.response) {
         setMsg(error.response.data.msg);
+        console.error("Error adding appointment:", error);
+        setError("Failed to add appointment");
       }
     }
   };
@@ -37,6 +53,7 @@ const AddAppointment = () => {
     <div>
       <h1 className="title">Appointments</h1>
       <h2 className="subtitle">Add Appointment</h2>
+       {error && <p className="notification is-danger">{error}</p>}
       <div className="card is-shadowless">
         <div className="card-content">
           <div className="content">

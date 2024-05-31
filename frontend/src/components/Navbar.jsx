@@ -25,10 +25,10 @@ const Navbar = () => {
         aria-label="main navigation"
       >
         <div className="navbar-brand">
-        <NavLink to="/dashboard" className="navbar-item">
+        <NavLink to="/dashboard" className="navbar-item" title="Home of SU_SCA" >
             <img src={logo} width="50" height="100" alt="logo" />
-            <p className="title">SU-SCAA</p>
-          </NavLink>
+            <p className="title">SU-SCA</p>
+          </NavLink >
           <a
             href="!#"
             role="button"

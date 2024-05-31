@@ -134,4 +134,16 @@
     padding: 10px;
   }
 
+  .appointment-list-container {
+    padding: 20px;
+  }
+  
+  .notification.is-danger {
+    color: rgb(252, 252, 252);
+  }
+  
+  .button.is-primary.mb-2 {
+    margin-bottom: 10px;
+  }
+
   
