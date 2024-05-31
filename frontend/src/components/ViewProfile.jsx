@@ -2,21 +2,26 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import logo from "../images/logo.png"; 
+import background from "../images/background.jpeg"
 
 const UserProfile = ({ user }) => {
   return (
-    <div>
-      <h1 className="title">Profile</h1>
-      <div className="content">
-        <p><strong>Name:</strong> {user.name}</p>
-        <p><strong>Email:</strong> {user.email}</p>
+    <div className="profile-container">
+      <div className="background-image" style={{ backgroundImage: `url(${background})` }}>
+        <div className="profile-picture-container">
+          <img src={logo} alt="Profile" className="profile-picture" />
+        </div>
       </div>
-      <Link
-        to={`/users/edit/${user.uuid}`}
-        className="button is-small is-info"
-      >
-        Edit
-      </Link>
+      <div className="profile-details">
+        <h1 className="profile-name">{user.name}</h1>
+        <Link
+          to={`/users/edit/${user.uuid}`}
+          className="button is-info"
+        >
+          Edit
+        </Link>
+      </div>
     </div>
   );
 };
@@ -58,3 +63,4 @@ const ViewProfile = () => {
 };
 
 export default ViewProfile;
+

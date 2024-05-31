@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import logo from "../images/logo.png"; 
 
 const AppointmentList = () => {
   const [appointments, setAppointments] = useState([]);
@@ -77,9 +78,9 @@ const AppointmentList = () => {
       </tr>
     ));
   };
-  
+
   return (
-    <div>
+    <div className="appointment-list-container">
       <h1 className="title">Appointments</h1>
       <h2 className="subtitle">List of Appointments</h2>
       <Link to="/appointments/add_appointment" className="button is-primary mb-2">
@@ -107,3 +108,5 @@ const AppointmentList = () => {
 };
 
 export default AppointmentList;
+
+// Add the following CSS

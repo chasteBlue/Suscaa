@@ -37,97 +37,95 @@ const Meetings = () => {
       return null;
     }
 
-    return meetings
-      .filter(meeting => meeting.status === status)
-      .map((meeting, index) => (
-        <tr key={meeting.uuid}>
-          <td>{index + 1}</td>
-          <td>{meeting.name}</td>
-          <td>{meeting.reason}</td>
-          <td>{meeting.date_counsel}</td>
-          <td>{meeting.counselors}</td>
-          <td>{meeting.status}</td>
-          <td>{meeting.user ? meeting.user.name : 'N/A'}</td>
-          {status === 'Pending' ? (
-            <td>
-              <>
-                <Link
-                  to={`/meetings/edit/${meeting.uuid}`}
-                  className="button is-small is-info mr-1"
-                >
-                  Edit
-                </Link>
-                <button
-                  onClick={() => deleteMeeting(meeting.uuid)}
-                  className="button is-small is-danger"
-                >
-                  Delete
-                </button>
-              </>
-            </td>
-          ) : null}
+    const filteredMeetings = meetings.filter((meeting) => meeting.status === status);
+    if (filteredMeetings.length === 0) {
+      return (
+        <tr>
+          <td colSpan={status === 'Pending' ? 4 : 6} className="has-text-centered">
+            No {status.toLowerCase()} appointments
+          </td>
         </tr>
-      ));
+      );
+    }
+
+    return filteredMeetings.map((meeting, index) => (
+      <tr key={meeting.uuid}>
+        <td>{index + 1}</td>
+        <td>{meeting.name}</td>
+        <td>{meeting.reason}</td>
+        {status !== 'Pending' && (
+          <>
+            <td>{meeting.date_counsel}</td>
+            <td>{meeting.counselors}</td>
+            <td>{meeting.user ? meeting.user.name : 'N/A'}</td>
+          </>
+        )}
+        {status === 'Pending' && (
+          <td>
+            <button onClick={() => deleteMeeting(meeting.uuid)} className="button is-small is-danger">
+              Delete
+            </button>
+          </td>
+        )}
+      </tr>
+    ));
   };
 
   return (
-    <div>
-      <h1 className="title" style={{ padding: '10px', borderRadius: '5px' }}>Send Meetings</h1>
-
-      <h2 className="subtitle" style={{ padding: '10px', borderRadius: '5px' }}>Pending Meetings</h2>
-      <table className="table is-striped is-fullwidth">
-        <thead>
-          <tr style={{ backgroundColor: 'yellow' }}>
-            <th>No</th>
-            <th>Name</th>
-            <th>Reason</th>
-            <th>Date of Counsel</th>
-            <th>Counselors</th>
-            <th>Status</th>
-            <th>Sent By</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {renderMeetings('Pending')}
-        </tbody>
-      </table>
-
-      <h2 className="subtitle" style={{padding: '10px', borderRadius: '5px' }}>Approved Meetings</h2>
-      <table className="table is-striped is-fullwidth">
-        <thead>
-          <tr style={{ backgroundColor: 'lightgreen' }}>
-            <th>No</th>
-            <th>Name</th>
-            <th>Reason</th>
-            <th>Date of Counsel</th>
-            <th>Counselors</th>
-            <th>Status</th>
-            <th>Sent By</th>
-          </tr>
-        </thead>
-        <tbody>
-          {renderMeetings('Approved')}
-        </tbody>
-      </table>
-
-      <h2 className="subtitle" style={{  padding: '10px', borderRadius: '5px' }}>Cancelled Meetings</h2>
-      <table className="table is-striped is-fullwidth">
-        <thead>
-          <tr style={{ backgroundColor: 'lightcoral' }}>
-            <th>No</th>
-            <th>Name</th>
-            <th>Reason</th>
-            <th>Date of Counsel</th>
-            <th>Counselors</th>
-            <th>Status</th>
-            <th>Sent By</th>
-          </tr>
-        </thead>
-        <tbody>
-          {renderMeetings('Rejected')}
-        </tbody>
-      </table>
+    <div className="container">
+      <h1 className="title" style={{ padding: '10px', borderRadius: '5px' }}>Meetings</h1>
+      <div className="columns">
+        <div className="column">
+          <div className="box">
+            <h2 className="subtitle" style={{ padding: '10px', borderRadius: '5px' }}>Pending Meetings</h2>
+            <table className="table is-striped is-fullwidth">
+              <thead>
+                <tr style={{ backgroundColor: 'yellow' }}>
+                  <th>No</th>
+                  <th>Name</th>
+                  <th>Reason</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>{renderMeetings('Pending')}</tbody>
+            </table>
+          </div>
+        </div>
+        <div className="column">
+          <div className="box">
+            <h2 className="subtitle" style={{ padding: '10px', borderRadius: '5px' }}>Approved Meetings</h2>
+            <table className="table is-striped is-fullwidth">
+              <thead>
+                <tr style={{ backgroundColor: 'lightgreen' }}>
+                  <th>No</th>
+                  <th>Name</th>
+                  <th>Reason</th>
+                  <th>Date of Counsel</th>
+                  <th>Counselors</th>
+                  <th>Sent By</th>
+                </tr>
+              </thead>
+              <tbody>{renderMeetings('Approved')}</tbody>
+            </table>
+          </div>
+          <div className="box">
+            <h2 className="subtitle" style={{ padding: '10px', borderRadius: '5px' }}>Cancelled Meetings</h2>
+            <table className="table is-striped is-fullwidth">
+              <thead>
+                <tr style={{ backgroundColor: 'lightcoral' }}>
+                  <th>No</th>
+                  <th>Name</th>
+                  <th>Reason</th>
+                  <th>Date of Counsel</th>
+                  <th>Counselors</th>
+                  <th>Sent By</th>
+                </tr>
+              </thead>
+              <tbody>{renderMeetings('Rejected')}</tbody>
+            </table>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
