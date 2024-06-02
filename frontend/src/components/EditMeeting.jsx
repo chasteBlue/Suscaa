@@ -25,7 +25,7 @@ const EditMeeting = () => {
   const getMeetingById = async () => {
     try {
       const response = await axios.get(`http://localhost:5000/meetings/${id}`);
-      const data = response.data.response; // Adjusted based on the expected response structure
+      const data = response.data.response;
       setMeeting({
         name: data.name || "",
         degree: data.degree || "",
@@ -47,8 +47,8 @@ const EditMeeting = () => {
     try {
       await axios.patch(`http://localhost:5000/meetings/${id}`, {
         status: meeting.status,
-        counselors: meeting.counselors, // Corrected property name
-        date_counsel: meeting.date_counsel, // Corrected property name
+        counselors: meeting.counselors, 
+        date_counsel: meeting.date_counsel,
       });
       navigate("/meetings");
     } catch (error) {
@@ -165,8 +165,8 @@ const EditMeeting = () => {
           <div className="control">
             <div className="select is-fullwidth">
               <select
-                name="counselors" // Corrected property name
-                value={meeting.counselors} // Corrected property name
+                name="counselors" 
+                value={meeting.counselors}
                 onChange={handleChange}
               >
                 <option value="">Select Counselor</option>
@@ -181,18 +181,19 @@ const EditMeeting = () => {
         </div>
 
         <div className="field">
-          <label className="label">Date</label>
-          <div className="control">
-            <input
-              type="date"
-              className="input"
-              name="date_counsel" // Corrected property name
-              value={meeting.date_counsel} // Corrected property name
-              onChange={handleChange}
-              placeholder="Date"
-            />
-          </div>
+        <label className="label">Date and Time</label>
+        <div className="control">
+          <input
+            type="datetime-local"
+            className="input"
+            name="date_counsel" 
+            value={meeting.date_counsel} 
+            onChange={handleChange}
+            placeholder="Date and Time"
+          />
         </div>
+      </div>
+
 
         <div className="field">
           <div className="control">

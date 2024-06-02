@@ -32,10 +32,18 @@ const Meetings = () => {
     }
   };
 
-  const formatDate = (dateString) => {
-    const options = { year: 'numeric', month: 'long', day: 'numeric' };
-    return new Date(dateString).toLocaleDateString(undefined, options);
+  const formatDateTime = (dateTimeString) => {
+    const options = {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit',
+    };
+    return new Date(dateTimeString).toLocaleString(undefined, options);
   };
+  
+  
 
   const renderMeetings = (status) => {
     if (!Array.isArray(meetings)) {
@@ -60,7 +68,7 @@ const Meetings = () => {
         <td>{meeting.reason}</td>
         {status !== 'Pending' && (
           <>
-            <td>{formatDate(meeting.date_counsel)}</td>
+            <td>{formatDateTime(meeting.date_counsel)}</td>
             <td>{meeting.counselors}</td>
             <td>{meeting.user ? meeting.user.name : 'N/A'}</td>
           </>
