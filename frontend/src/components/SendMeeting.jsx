@@ -64,7 +64,7 @@ const SendMeeting = () => {
           <td>{meeting.user ? meeting.user.name : 'N/A'}</td>
             <td>
               <Link to={`/meetings/edit/${meeting.uuid}`} className="button is-small is-info mr-1">
-                Edit
+                Manage Send
               </Link>
           
           {status === 'Pending' ? (
