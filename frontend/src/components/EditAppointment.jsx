@@ -159,7 +159,7 @@ const EditAppointment = () => {
                   <label className="label">Student ID</label>
                   <div className="control">
                     <input
-                      type="number"
+                      type="text"
                       className="input"
                       value={student_id}
                       onChange={(e) => setStudentID(e.target.value)}
