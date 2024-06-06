@@ -94,7 +94,7 @@ const ViewProfile = () => {
   };
 
   const eventStyleGetter = (event) => {
-    const backgroundColor = counselorColors[event.title] || 'blue';
+    const backgroundColor = counselorColors[event.title.split(' - ')[0]] || 'blue';
     const style = {
       backgroundColor,
       borderRadius: '5px',
@@ -115,7 +115,7 @@ const ViewProfile = () => {
         <Calendar
           localizer={localizer}
           events={approvedMeetings.map(meeting => ({
-            title: meeting.counselors,
+            title: `${meeting.counselors} - ${meeting.name}`,
             start: new Date(meeting.date_counsel),
             end: new Date(new Date(meeting.date_counsel).getTime() + 60 * 60 * 1000),
           }))}

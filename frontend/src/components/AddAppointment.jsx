@@ -16,8 +16,8 @@ const AddAppointment = () => {
 
   useEffect(() => {
     if (error) {
-      const timer = setTimeout(() => setError(''), 3000); // Clear error after 3 seconds
-      return () => clearTimeout(timer); // Cleanup timer on component unmount
+      const timer = setTimeout(() => setError(''), 3000);
+      return () => clearTimeout(timer); 
     }
   }, [error]);
 
