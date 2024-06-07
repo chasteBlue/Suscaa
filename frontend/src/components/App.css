@@ -146,4 +146,276 @@
     margin-bottom: 10px;
   }
 
+
+
+  /*Landing page CSS */ 
+  .landingpage01-container {
+    width: 100%;
+    display: flex;
+    overflow: auto;
+    min-height: 100vh;
+    align-items: center;
+    flex-direction: column;
+  }
+  .landingpage01-landingpage01 {
+    width: 100%;
+    height: 771px;
+    display: flex;
+    overflow: hidden;
+    position: relative;
+    align-items: flex-start;
+    flex-shrink: 0;
+    background-color: rgba(229, 229, 242, 1);
+  }
+  .landingpage01-frame1321316142 {
+    gap: 10px;
+    top: 258px;
+    left: 0px;
+    width: 754px;
+    height: 331px;
+    display: flex;
+    padding: 10px;
+    position: absolute;
+    align-items: flex-start;
+    flex-shrink: 0;
+    flex-direction: column;
+  }
+  .landingpage01-copy {
+    gap: 24px;
+    width: 728px;
+    height: 201px;
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    flex-direction: column;
+  }
+  .landingpage01-text {
+    color: rgba(0, 0, 0, 1);
+    height: auto;
+    font-size: 48px;
+    align-self: stretch;
+    font-style: Bold;
+    text-align: center;
+    font-family: Arial;
+    font-weight: 700;
+    line-height: normal;
+    font-stretch: normal;
+    text-decoration: none;
+  }
+  .landingpage01-text02 {
+    color: rgba(130, 130, 130, 1);
+    height: auto;
+    align-self: stretch;
+    text-align: center;
+    line-height: 150%;
+  }
+  .landingpage01-button {
+    gap: 8px;
+    display: flex;
+    padding: 14px 24px;
+    box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.05000000074505806) ;
+    align-items: center;
+    border-radius: 8px;
+    justify-content: center;
+    background-color: rgba(97, 128, 178, 1);
+  }
+  .landingpage01-text04 {
+    color: rgba(229, 229, 242, 1);
+    height: auto;
+    font-size: 20px;
+    font-style: Medium;
+    text-align: left;
+    font-family: Arial;
+    font-weight: 500;
+    line-height: 150%;
+    font-stretch: normal;
+    text-decoration: none;
+  }
+  .landingpage01-counselorclipart11 {
+    top: 201px;
+    left: 720px;
+    width: 720px;
+    height: 415px;
+    position: absolute;
+  }
+  .landingpage01-navigation {
+    top: 0px;
+    left: 0px;
+    width: 1440px;
+    height: 164px;
+    display: flex;
+    overflow: hidden;
+    position: absolute;
+    align-items: flex-start;
+    flex-shrink: 0;
+    background-color: rgba(229, 229, 242, 1);
+  }
+  .landingpage01-items {
+    gap: 48px;
+    top: 56px;
+    left: 1259px;
+    width: 101px;
+    display: flex;
+    position: absolute;
+    align-items: center;
+    justify-content: flex-end;
+  }
+  .landingpage01-button1 {
+    gap: 8px;
+    display: flex;
+    padding: 14px 24px;
+    box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.05000000074505806) ;
+    align-items: center;
+    border-radius: 8px;
+    justify-content: center;
+    background-color: rgba(43, 58, 97, 1);
+  }
+  .landingpage01-text06 {
+    color: rgba(229, 229, 242, 1);
+    height: auto;
+    font-size: 20px;
+    font-style: Medium;
+    text-align: left;
+    font-family: Arial;
+    font-weight: 500;
+    line-height: 150%;
+    font-stretch: normal;
+    text-decoration: none;
+  }
+  .landingpage01-text08 {
+    top: 67px;
+    left: 185px;
+    color: rgba(0, 0, 0, 1);
+    height: auto;
+    position: absolute;
+    text-align: left;
+    line-height: 150%;
+    font-family: Trebuchet MS;
+    font-size: 25px;
+  }
+  .landingpage01-suscamainlogofinal1 {
+    top: 27px;
+    left: 36px;
+    width: 149px;
+    height: 110px;
+    position: absolute;
+  }
+  
+
+
+  /*Login CSS*/
+  .login-container {
+    width: 100%;
+    display: flex;
+    overflow: auto;
+    min-height: 100vh;
+    align-items: center;
+    justify-content: center; 
+    background-color: rgba(229, 229, 242, 1);
+  }
+  .login-login {
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    background-color: rgba(255, 255, 255, 1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+  }
+  .login-content {
+    width: 100%;
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+  }
+  .login-copy {
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    margin-bottom: 24px; 
+  }
+  .login-text {
+    color: rgba(0, 0, 0, 1);
+    font-size: 24px;
+    font-weight: 700;
+    text-align: center;
+    font-family: Inter, sans-serif; 
+    margin-bottom: 8px; 
+  }
+  .login-text02 {
+    color: rgba(0, 0, 0, 1);
+    font-size: 16px;
+    font-weight: 400;
+    text-align: center;
+    font-family: Inter, sans-serif; 
+    margin-bottom: 16px; 
+  }
+  .login-inputandbutton {
+    width: 100%;
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    gap: 16px; 
+  }
+  .login-field,
+  .login-field1 {
+  width: 100%;
+  padding: 8px 16px;
+  border: 1px solid rgba(224, 224, 224, 1);
+  border-radius: 8px;
+  background-color: rgba(255, 255, 255, 1);
+}
+  .login-text04 {
+    color: rgba(130, 130, 130, 1);
+    height: auto;
+    flex-grow: 1;
+    text-align: left;
+    line-height: 150%;
+  }
+  .login-text06 {
+    color: rgba(130, 130, 130, 1);
+    height: auto;
+    flex-grow: 1;
+    text-align: left;
+    line-height: 150%;
+  }
+  .login-button { 
+    width: 100%;
+    padding: 10px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    background-color: rgba(97, 128, 178, 1);
+    color: rgba(255, 255, 255, 1);
+    cursor: pointer;
+  }
+  .login-button:hover {
+    background-color: rgba(85, 115, 159, 1);
+  }
+  .login-text08 {
+    color: rgba(255, 255, 255, 1);
+    text-align: center;
+    line-height: 150%;
+  }
+  .login-text10,
+.login-text11 {
+  width: 100%;
+  font-size: 16px;
+  text-align: center;
+  font-family: Arial, sans-serif; 
+  line-height: 150%;
+}
+
+  .login-text11 {
+    color: rgba(0, 0, 0, 1);
+  }
+
+  .login-suscamainlogofinal2 {
+    width: 188px;
+    height: 169px;
+    margin-bottom: 24px; /* Adjusted for spacing */
+  }
   
