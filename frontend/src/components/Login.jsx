@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { LoginUser, reset } from "../features/authSlice";
+import logo from '../images/logo.png'
+import './App.css';
 
 const Login = () => {
     const [email, setEmail] = useState("");
@@ -34,52 +36,37 @@ const Login = () => {
     };
 
     return (
-        <section className="hero has-background-grey-light is-fullheight is-fullwidth">
-            <div className="hero-body">
-                <div className="container">
-                    <div className="columns is-centered">
-                        <div className="column is-4">
-                            <form onSubmit={Auth} className="box">
-                                {isError && <p className='has-text-centered'>{message}</p>}
-                                <h1 className="title is-2">Sign In</h1>
-                                <p className='mt-1 mb-3'>Welcome to SU-SCAA</p>
-                                <div className="field">
-                                    <label className="label">Email</label>
-                                    <div className="control">
-                                        <input 
-                                            type="text" 
-                                            className={`input ${emailError ? 'is-danger' : ''}`} 
-                                            value={email} 
-                                            onChange={(e) => setEmail(e.target.value)} 
-                                            placeholder='Email' 
-                                        />
-                                    </div>
-                                    {emailError && <p className="help is-danger">{emailError}</p>}
-                                </div>
-
-                                <div className="field">
-                                    <label className="label">Password</label>
-                                    <div className="control">
-                                        <input 
-                                            type="password" 
-                                            className="input" 
-                                            value={password} 
-                                            onChange={(e) => setPassword(e.target.value)} 
-                                            placeholder='*********' 
-                                        />
-                                    </div>
-                                </div>
-
-                                <div className="field mt-5">
-                                    <button className="button is-success is-fullwidth" type='submit'>
-                                        {isLoading ? "Loading..." : "Login"}
-                                    </button>
-                                </div>
-                                <Link to="/register" className="is-primary is-medium">New here? Sign Up!</Link>
-                            </form>
-                        </div>
+        <section className="login-container">
+            <div className="login-login">
+                <form onSubmit={Auth} className="login-content">
+                    <div className="login-copy">
+                    <Link to = "/"><img src={logo} alt="Logo" className="login-suscamainlogofinal2" /></Link>
+                        <h1 className="login-text">Sign In</h1>
+                        <p className='login-text02'>Welcome to SU-SCA</p>
                     </div>
-                </div>
+                    {isError && <p className='has-text-danger has-text-centered'>{message}</p>}
+                    <div className="login-inputandbutton">
+                        <input 
+                            type="text" 
+                            className={`login-field ${emailError ? 'is-danger' : ''}`} 
+                            value={email} 
+                            onChange={(e) => setEmail(e.target.value)} 
+                            placeholder='Email' 
+                        />
+                        {emailError && <p className="help is-danger">{emailError}</p>}
+                        <input 
+                            type="password" 
+                            className="login-field" 
+                            value={password} 
+                            onChange={(e) => setPassword(e.target.value)} 
+                            placeholder='Password' 
+                        />
+                        <button className="login-button" type='submit'>
+                            {isLoading ? "Loading..." : "Login"}
+                        </button>
+                    </div>
+                    <Link to="/register" className="is-primary is-medium">New here? Sign Up!</Link>
+                </form>
             </div>
         </section>
     )
