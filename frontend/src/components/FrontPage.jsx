@@ -1,29 +1,60 @@
-import React from 'react';
+
+import React from 'react'
 import { Link } from 'react-router-dom';
 
-const FrontPage = () => {
+import logo from '../images/logo.png'
+import image from '../images/counselor_image.JPG'
+
+import './App.css'
+
+const FrontPage = (props) => {
   return (
-    <section className="hero is-fullheight is-primary">
-      <div className="hero-body">
-        <div className="container has-text-centered">
-          <h1 className="title">
-            Welcome to the School Guidance Counselor Portal
-          </h1>
-          <h2 className="subtitle">
-            Your first step towards a better school experience
-          </h2>
-          <div className="buttons is-centered">
-            <Link to="/login" className="button is-link is-medium">
-              Sign In
-            </Link>
-            <Link to="/register" className="button is-primary is-medium">
-              Sign Up
+  
+      <div className="landingpage01-landingpage01">
+        <div className="landingpage01-frame1321316142">
+          <div className="landingpage01-copy">
+            <span className="landingpage01-text">
+              <span>Welcome to the School Guidance Counselor Portal</span>
+            </span>
+            <span className="landingpage01-text02 Subheading">
+              <span>Your first step towards a better school experience</span>
+            </span>
+            <Link to="/register">
+            <button className="landingpage01-button">
+              <span className="landingpage01-text04">
+                <span>Book Appointment</span>
+              </span>
+            </button>
             </Link>
           </div>
         </div>
+        <img
+          src={image}
+          alt="counselor_art_image"
+          className="landingpage01-counselorclipart11"
+        />
+        <div className="landingpage01-navigation">
+          <div className="landingpage01-items">
+          <Link to="/login">
+            <button className="landingpage01-button1">
+              <span className="landingpage01-text06">
+                <span>Login</span>
+              </span>
+            </button>
+            </Link>
+          </div>
+          <span className="landingpage01-text08">
+            <span>SU-SCA</span>
+          </span>
+          <Link to="/">
+          <img src={logo} className="landingpage01-suscamainlogofinal1"/>
+          </Link>
+
+        </div>
       </div>
-    </section>
-  );
+   
+  )
 }
 
-export default FrontPage;
+export default FrontPage
+
