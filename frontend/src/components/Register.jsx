@@ -3,6 +3,8 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { RegisterUser, reset } from "../features/authSlice";
+import logo from '../images/logo.png'
+import './App.css'; //I just recycled the Login classes.
 
 const Register = () => {
     const [name, setName] = useState("");
@@ -50,80 +52,52 @@ const Register = () => {
     }, [isSuccess, dispatch, navigate]);
 
     return (
-        <section className="hero has-background-grey-light is-fullheight is-fullwidth">
-            <div className="hero-body">
-                <div className="container">
-                    <div className="columns is-centered">
-                        <div className="column is-4">
-                            <form onSubmit={handleRegister} className="box">
-                                {isError && <p className='has-text-centered'>{message}</p>}
-                                <h1 className="title is-2">Sign Up</h1>
-                                <p className='mt-1 mb-3'>Student's Safe Place</p>
-
-                                <div className="field">
-                                    <label className="label">Name</label>
-                                    <div className="control">
-                                        <input
-                                            type="text"
-                                            className="input"
-                                            value={name}
-                                            onChange={(e) => setName(e.target.value)}
-                                            placeholder='Full name'
-                                        />
-                                    </div>
-                                </div>
-
-                                <div className="field">
-                                    <label className="label">Email</label>
-                                    <div className="control">
-                                        <input
-                                            type="email"
-                                            className={`input ${emailError ? 'is-danger' : ''}`}
-                                            value={email}
-                                            onChange={(e) => setEmail(e.target.value)}
-                                            placeholder='Email'
-                                        />
-                                    </div>
-                                    {emailError && <p className="help is-danger">{emailError}</p>}
-                                </div>
-
-                                <div className="field">
-                                    <label className="label">Password</label>
-                                    <div className="control">
-                                        <input
-                                            type="password"
-                                            className="input"
-                                            value={password}
-                                            onChange={(e) => setPassword(e.target.value)}
-                                            placeholder='*********'
-                                        />
-                                    </div>
-                                </div>
-
-                                <div className="field">
-                                    <label className="label">Confirm Password</label>
-                                    <div className="control">
-                                        <input
-                                            type="password"
-                                            className={`input ${passwordError ? 'is-danger' : ''}`}
-                                            value={confirmPassword}
-                                            onChange={(e) => setConfirmPassword(e.target.value)}
-                                            placeholder='*********'
-                                        />
-                                    </div>
-                                    {passwordError && <p className="help is-danger">{passwordError}</p>}
-                                </div>
-
-                                <div className="field mt-5">
-                                    <button className="button is-success is-fullwidth" type='submit'>
-                                        Sign Up
-                                    </button>
-                                </div>
-                                <Link to="/login" className="is-primary is-medium">Already have an account? Sign In!</Link>
-                            </form>
-                        </div>
+        <section className="login-container">
+            <div className="login-login">
+                <form onSubmit={handleRegister} className="login-content">
+                    <div className="login-copy">
+                    <Link to = "/"><img src={logo} alt="Logo" className="login-suscamainlogofinal2" /></Link>
+                        <h1 className="login-text">Sign Up</h1>
+                        <p className='login-text02'>Student's Safe Place</p>
                     </div>
-                </div>
+                    {isError && <p className='has-text-danger has-text-centered'>{message}</p>}
+                    <div className="login-inputandbutton">
+                        <input
+                            type="text"
+                            className="login-field"
+                            value={name}
+                            onChange={(e) => setName(e.target.value)}
+                            placeholder='Full name'
+                        />
+                        <input
+                            type="email"
+                            className={`login-field ${emailError ? 'is-danger' : ''}`}
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            placeholder='Email'
+                        />
+                        {emailError && <p className="help is-danger">{emailError}</p>}
+                        <input
+                            type="password"
+                            className="login-field"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            placeholder='Password'
+                        />
+                        <input
+                            type="password"
+                            className={`login-field ${passwordError ? 'is-danger' : ''}`}
+                            value={confirmPassword}
+                            onChange={(e) => setConfirmPassword(e.target.value)}
+                            placeholder='Confirm Password'
+                        />
+                        {passwordError && <p className="help is-danger">{passwordError}</p>}
+                        <button className="login-button" type='submit'>
+                            Sign Up
+                        </button>
+                    </div>
+                    <Link to="/login" className="is-primary is-medium">Already have an account? Sign In!</Link>
+                </form>
             </div>
         </section>
     );
